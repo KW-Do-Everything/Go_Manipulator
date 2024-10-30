@@ -48,19 +48,19 @@ int main(int argc, char * argv[])
 
   auto gripper_interface = MoveGroupInterface(node, "gripper");
 
-  gripper_interface.setNamedTarget("close");
+  gripper_interface.setNamedTarget("set");
   if (gripper_interface.move()) {
-    RCLCPP_INFO(logger, "Gripper closed successfully");
+    RCLCPP_INFO(logger, "Gripper set successfully");
     std::this_thread::sleep_for(std::chrono::seconds(2));
   } else {
-    RCLCPP_ERROR(logger, "Failed to close the gripper");
+    RCLCPP_ERROR(logger, "Failed to set the gripper");
   }
 
-  move_group_interface.setNamedTarget("ready");
+  move_group_interface.setNamedTarget("home");
   if (move_group_interface.move()) {
     RCLCPP_INFO(logger, "Arm moved back to home position");
     std::this_thread::sleep_for(std::chrono::seconds(2));
-    gripper_interface.setNamedTarget("open");
+    gripper_interface.setNamedTarget("set");
     if (gripper_interface.move()) {
       RCLCPP_INFO(logger, "Gripper opened successfully");
     } else {
