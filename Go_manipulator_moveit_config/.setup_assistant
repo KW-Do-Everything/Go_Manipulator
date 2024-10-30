@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: Go_manipulator_description
+    relative_path: urdf/Go_manipulator.urdf
+  srdf:
+    relative_path: config/Go_manipulator.srdf
+  package_settings:
+    author_name: yungoon
+    author_email: sirius584@naver.com
+    generated_timestamp: 1730293965
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
