@@ -35,7 +35,7 @@
 
 
   <!-- Base Link -->
-  <link name="base_link">
+  <link name="link0">
     <inertial>
       <origin xyz="-0.0676 -0.0067 0.1811" rpy="0 0 0" />
       <mass value="0.8410" />
@@ -44,7 +44,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/base_link.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.75 0.75 0.75 1" />
@@ -53,7 +53,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/base_link.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -68,14 +68,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link1.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link1.STL" />
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link1.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link1.STL" />
       </geometry>
     </collision>
   </link>
@@ -83,7 +83,7 @@
   <!-- Joint 1 -->
   <joint name="joint1" type="revolute">
     <origin xyz="-0.0676 -0.18 0.0207" rpy="1.5708 0 0" />
-    <parent link="base_link" />
+    <parent link="link0" />
     <child link="link1" />
     <axis xyz="0 1 0" />
     <limit lower="-3.14159" upper="3.14159" effort="1" velocity="1.0" />
@@ -99,14 +99,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link2.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link2.STL" />
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link2.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link2.STL" />
       </geometry>
     </collision>
   </link>
@@ -131,14 +131,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link3.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link3.STL" />
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link3.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link3.STL" />
       </geometry>
     </collision>
   </link>
@@ -163,14 +163,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link4.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link4.STL" />
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link4.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link4.STL" />
       </geometry>
     </collision>
   </link>
@@ -195,14 +195,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link5.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link5.STL" />
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/link5.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/arm/link5.STL" />
       </geometry>
     </collision>
   </link>
@@ -227,14 +227,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/gripper_base.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/gripper/gripper_base.STL" />
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/gripper_base.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/gripper/gripper_base.STL" />
       </geometry>
     </collision>
   </link>
@@ -258,14 +258,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/gripper_finger1.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/gripper/gripper_finger1.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/gripper_finger1.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/gripper/gripper_finger1.STL" />
       </geometry>
     </collision>
   </link>
@@ -289,14 +289,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/gripper_finger2.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/gripper/gripper_finger2.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://Go_manipulator_description/meshes/gripper_finger2.STL" />
+        <mesh filename="package://Go_manipulator_description/meshes/gripper/gripper_finger2.STL" />
       </geometry>
     </collision>
   </link>

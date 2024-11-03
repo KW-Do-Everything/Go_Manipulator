@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!-- go_gripper.urdf.xacro -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="go_gripper" params="prefix">
+    <xacro:property 
+      name="meshes_file_direction"
+      value="package://Go_manipulator_description/meshes"/>
+
+    <!-- Gripper Base -->
+    <link name="${prefix}gripper_base">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${meshes_file_direction}/gripper_base.STL"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${meshes_file_direction}/gripper_base.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0001 -0.0283 0" rpy="0 0 0"/>
+        <mass value="0.0568"/>
+        <inertia ixx="3.21e-5" ixy="8.06e-8" ixz="-3.23e-7" iyy="2.21e-5" iyz="-6.81e-18" izz="1.67e-5"/>
+      </inertial>
+    </link>
+
+    <!-- Gripper Finger 1 and Joint 7 -->
+    <joint name="${prefix}joint7" type="revolute">
+      <parent link="${prefix}gripper_base"/>
+      <child link="${prefix}gripper_finger1"/>
+      <origin xyz="-0.0509 0.0241 -0.0024" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-0.2" upper="0.2" effort="100" velocity="0.1"/>
+    </joint>
+
+    <link name="${prefix}gripper_finger1">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${meshes_file_direction}/gripper_finger1.STL"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${meshes_file_direction}/gripper_finger1.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0518 -0.0832 -0.0127" rpy="0 0 0"/>
+        <mass value="0.0356"/>
+        <inertia ixx="4.53e-5" ixy="-4.95e-7" ixz="-2.13e-7" iyy="2.41e-5" iyz="-8.24e-6" izz="2.56e-5"/>
+      </inertial>
+    </link>
+
+    <!-- Gripper Finger 2 and Joint 8 (Mimic Joint) -->
+    <joint name="${prefix}joint8" type="revolute">
+      <parent link="${prefix}gripper_base"/>
+      <child link="${prefix}gripper_finger2"/>
+      <origin xyz="0.0509 0.0241 0.0019" rpy="0 0 3.1416"/>
+      <axis xyz="1 0 0"/>
+      <mimic joint="${prefix}joint7"/>
+      <limit lower="-0.2" upper="0.2" effort="100" velocity="0.1"/>
+    </joint>
+
+    <link name="${prefix}gripper_finger2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${meshes_file_direction}/gripper_finger2.STL"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${meshes_file_direction}/gripper_finger2.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0518 0.0832 0.0141" rpy="0 0 0"/>
+        <mass value="0.0356"/>
+        <inertia ixx="4.53e-5" ixy="4.98e-7" ixz="2.22e-7" iyy="2.41e-5" iyz="-8.25e-6" izz="2.56e-5"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+</robot>

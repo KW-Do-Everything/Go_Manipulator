@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<robot name="go_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default="" />
+  <xacro:arg name="use_sim" default="false" />
+  <xacro:arg name="use_fake_hardware" default="false" />
+  <xacro:arg name="fake_sensor_commands" default="false" />
+
+
+
+
+  <!-- ARM 매크로 포함 -->
+  <xacro:include filename="$(find Go_manipulator_description)/urdf/go_manipulator_arm.urdf.xacro"/>
+
+  <!-- GRIPPER 매크로 포함 -->
+  <xacro:include filename="$(find Go_manipulator_description)/urdf/go_gripper.urdf.xacro"/>
+
+
+  <!-- World -->
+  <link name="world"/>
+
+  <!-- Used for fixing OpenManipulator-Y -->
+  <joint name="$(arg prefix)world_fixed" type="fixed">
+    <parent link="world"/>
+    <child link="$(arg prefix)link0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ARM 끝에 GRIPPER를 고정하는 조인트 -->
+  <joint name="$(arg prefix)gripper_fixed" type="fixed">
+    <parent link="$(arg prefix)link6"/>
+    <child link="$(arg prefix)gripper_base"/>
+    <origin xyz="0.0 -0.2398 -0.0005" rpy="0 0 0"/>
+  </joint>
+
+
+  <xacro:go_manipulator prefix="$(arg prefix)"/>
+  <xacro:go_gripper prefix="$(arg prefix)"/>
+
+
+</robot>
