@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Go_manipulator">
+<robot name="Go_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default="" />
 
   <!-- Material Definitions -->
   <material name="black">
@@ -20,5 +21,23 @@
 
   <!-- Include Gripper -->
   <xacro:include filename="$(find Go_manipulator_description)/urdf/go_gripper.urdf.xacro"/>
+
+  <!-- World -->
+  <link name="world"/>
+
+  <!-- Used for fixing OpenManipulator-Y -->
+  <joint name="$(arg prefix)world_fixed" type="fixed">
+    <parent link="world"/>
+    <child link="$(arg prefix)link0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="$(arg prefix)gripper_fixed" type="fixed">
+    <origin xyz="0.0006 -0.1363 -0.0005" rpy="0 1.5708 0" />
+    <parent link="$(arg prefix)link6"/>
+    <axis xyz="0 0 0"/>
+    <child link="$(arg prefix)gripper_base"/>
+  </joint>
+
 
 </robot>
