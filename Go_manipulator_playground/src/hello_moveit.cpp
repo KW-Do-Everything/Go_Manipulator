@@ -30,8 +30,8 @@ int main(int argc, char * argv[])
     return msg;
   }();
   move_group_interface.setPoseTarget(target_pose);
-  move_group_interface.setGoalPositionTolerance(0.1);
-  move_group_interface.setGoalOrientationTolerance(0.1);
+  move_group_interface.setGoalPositionTolerance(1);
+  move_group_interface.setGoalOrientationTolerance(1);
 
   auto const [success, plan] = [&move_group_interface]{
     moveit::planning_interface::MoveGroupInterface::Plan msg;
