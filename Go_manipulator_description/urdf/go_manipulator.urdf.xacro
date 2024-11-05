@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <robot name="Go_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:arg name="prefix" default="" />
+  <xacro:arg name="use_sim" default="false" />
+  <xacro:arg name="use_fake_hardware" default="false" />
+  <xacro:arg name="fake_sensor_commands" default="false" />
+
+  <xacro:include filename="$(find Go_manipulator_description)/ros2_control/go_manipulator_y_system.ros2_control.xacro" />
+
 
   <!-- Material Definitions -->
   <material name="black">
@@ -16,11 +22,13 @@
     <color rgba="0.8 0.0 0.0 1.0"/>
   </material>
 
-  <!-- Include Arm -->
+  <!-- Arm 포함 -->
   <xacro:include filename="$(find Go_manipulator_description)/urdf/go_manipulator_arm.urdf.xacro"/>
+  <xacro:go_manipulator_arm prefix="$(arg prefix)"/>
 
-  <!-- Include Gripper -->
+  <!-- Gripper 포함 -->
   <xacro:include filename="$(find Go_manipulator_description)/urdf/go_gripper.urdf.xacro"/>
+  <xacro:go_gripper prefix="$(arg prefix)"/>
 
   <!-- World -->
   <link name="world"/>
@@ -33,7 +41,7 @@
   </joint>
 
   <joint name="$(arg prefix)gripper_fixed" type="fixed">
-    <origin xyz="0.0006 -0.1363 -0.0005" rpy="0 1.5708 0" />
+    <origin xyz="0.0 -0.0 0.0" rpy="0 1.5708 0" />
     <parent link="$(arg prefix)link6"/>
     <axis xyz="0 0 0"/>
     <child link="$(arg prefix)gripper_base"/>

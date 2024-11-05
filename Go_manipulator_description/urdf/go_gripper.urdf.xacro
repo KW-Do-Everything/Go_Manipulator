@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro  name="go_gripper" params="perfix">
+  <xacro:macro  name="go_gripper" params="prefix">
 
-    <xacro:property
-      name="meshes_file_direction"
-      value="package://Go_manipulator_description/meshes"/>
+    <xacro:property name="meshes_file_direction" value="package://Go_manipulator_description/meshes"/>
         
     <!-- Gripper Base -->
     <link name="${prefix}gripper_base">
@@ -100,5 +98,5 @@
       <mimic joint="${prefix}joint7"/>
       <limit lower="-0.2" upper="0.2" effort="100" velocity="0.1" />
     </joint>
-
+  </xacro:macro>
 </robot>
