@@ -20,18 +20,18 @@ int main(int argc, char * argv[])
 
   auto const target_pose = []{
     geometry_msgs::msg::Pose msg;
-    msg.orientation.x = 0.0;
-    msg.orientation.y = 0.0;
-    msg.orientation.z = 0.0;
-    msg.orientation.w = 1.0;
-    msg.position.x = -0.1;
-    msg.position.y = -0.2;
-    msg.position.z = 0.6;
+    msg.orientation.x = 0.4005;
+    msg.orientation.y = 0.5826;
+    msg.orientation.z = 0.4005;
+    msg.orientation.w = 0.58269;
+    msg.position.x = -0.0669;
+    msg.position.y = -0.568;
+    msg.position.z = 0.1882;
     return msg;
   }();
   move_group_interface.setPoseTarget(target_pose);
-  move_group_interface.setGoalJointTolerance(0.001);
-  move_group_interface.setGoalOrientationTolerance(0.001);
+  move_group_interface.setGoalPositionTolerance(0.1);
+  move_group_interface.setGoalOrientationTolerance(0.1);
 
   auto const [success, plan] = [&move_group_interface]{
     moveit::planning_interface::MoveGroupInterface::Plan msg;
