@@ -5,7 +5,7 @@
   <xacro:arg name="use_fake_hardware" default="false" />
   <xacro:arg name="fake_sensor_commands" default="false" />
 
-  <xacro:include filename="$(find Go_manipulator_description)/ros2_control/go_manipulator_y_system.ros2_control.xacro" />
+  <xacro:include filename="$(find Go_manipulator_description)/ros2_control/go_manipulator_system.ros2_control.xacro" />
 
 
   <!-- Material Definitions -->
